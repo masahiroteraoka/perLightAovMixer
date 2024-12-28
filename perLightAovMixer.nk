@@ -1,0 +1,458 @@
+Read {
+ inputs 0
+ file_type exr
+ file "\[file dirname \[value root.name]]/aov.karmarendersettings.0001.exr"
+ format "1280 720 0 0 1280 720 1 HD_720"
+ origset true
+ version 2
+ name Read1
+ xpos 180
+ ypos -421
+}
+Unpremult {
+ channels all
+ name Unpremult1
+ xpos 180
+ ypos -277
+}
+Dot {
+ name Dot1
+ xpos 214
+ ypos -198
+}
+set Naf10d400 [stack 0]
+Dot {
+ name Dot15
+ xpos -116
+ ypos -198
+}
+set Naf178200 [stack 0]
+Dot {
+ name Dot18
+ xpos -336
+ ypos -198
+}
+set Naf178800 [stack 0]
+Dot {
+ name Dot21
+ xpos -556
+ ypos -198
+}
+set Naf178e00 [stack 0]
+Dot {
+ name Dot25
+ xpos -1326
+ ypos -198
+}
+Dot {
+ name Dot24
+ xpos -1326
+ ypos 1866
+}
+push $Naf10d400
+Dot {
+ name Dot2
+ xpos 434
+ ypos -198
+}
+set Naf23bc00 [stack 0]
+add_layer {C_lgt3 C_lgt3.red C_lgt3.green C_lgt3.blue C_lgt3.alpha}
+Shuffle2 {
+ fromInput1 {{0} B}
+ in1 C_lgt3
+ fromInput2 {{0} B}
+ mappings "4 C_lgt3.red 0 0 rgba.red 0 0 C_lgt3.green 0 1 rgba.green 0 1 C_lgt3.blue 0 2 rgba.blue 0 2 C_lgt3.alpha 0 3 rgba.alpha 0 3"
+ name Shuffle1
+ label "\[knob in1]>\[knob out1]"
+ xpos 400
+ ypos -109
+}
+Dot {
+ name Dot3
+ xpos 434
+ ypos -6
+}
+set Naf23c800 [stack 0]
+Dot {
+ name Dot8
+ xpos 654
+ ypos -6
+}
+push $Naf23bc00
+Dot {
+ name Dot5
+ xpos 874
+ ypos -198
+}
+set Naf23d400 [stack 0]
+Dot {
+ name Dot4
+ xpos 874
+ ypos 138
+}
+Merge2 {
+ inputs 2
+ operation divide
+ name Merge2
+ xpos 620
+ ypos 135
+}
+Dot {
+ name Dot9
+ xpos 654
+ ypos 282
+}
+set N35ab9000 [stack 0]
+push $Naf23d400
+Dot {
+ name Dot6
+ xpos 1094
+ ypos -198
+}
+set N35917600 [stack 0]
+Dot {
+ name Dot12
+ xpos 1314
+ ypos -198
+}
+add_layer {combineddiffuse combineddiffuse.red combineddiffuse.green combineddiffuse.blue}
+Shuffle2 {
+ fromInput1 {{0} B}
+ in1 combineddiffuse
+ fromInput2 {{0} B}
+ mappings "4 combineddiffuse.red 0 0 rgba.red 0 0 combineddiffuse.green 0 1 rgba.green 0 1 combineddiffuse.blue 0 2 rgba.blue 0 2 black -1 -1 rgba.alpha 0 3"
+ name Shuffle3
+ label "\[knob in1]>\[knob out1]"
+ xpos 1280
+ ypos -109
+}
+Merge2 {
+ inputs 2
+ operation multiply
+ name Merge7
+ xpos 1280
+ ypos 279
+}
+Dot {
+ name Dot13
+ xpos 1314
+ ypos 1002
+}
+set N1acc7a00 [stack 0]
+Grade {
+ gamma 0.335
+ black_clamp false
+ name Grade2
+ xpos 1280
+ ypos 1143
+}
+Dot {
+ name Dot14
+ xpos 1314
+ ypos 1266
+}
+push $N1acc7a00
+push $N35ab9000
+push $N35917600
+add_layer {combinedglossyreflection combinedglossyreflection.red combinedglossyreflection.green combinedglossyreflection.blue}
+Shuffle2 {
+ fromInput1 {{0} B}
+ in1 combinedglossyreflection
+ fromInput2 {{0} B}
+ mappings "4 combinedglossyreflection.red 0 0 rgba.red 0 0 combinedglossyreflection.green 0 1 rgba.green 0 1 combinedglossyreflection.blue 0 2 rgba.blue 0 2 black -1 -1 rgba.alpha 0 3"
+ name Shuffle2
+ label "\[knob in1]>\[knob out1]"
+ xpos 1060
+ ypos -109
+}
+Merge2 {
+ inputs 2
+ operation multiply
+ name Merge3
+ xpos 1060
+ ypos 279
+}
+Dot {
+ name Dot7
+ xpos 1094
+ ypos 474
+}
+set Nb5959e00 [stack 0]
+Grade {
+ multiply 0.47
+ black_clamp false
+ name Grade1
+ xpos 1060
+ ypos 615
+}
+Dot {
+ name Dot10
+ xpos 1094
+ ypos 762
+}
+push $Nb5959e00
+push $Naf23c800
+Merge2 {
+ inputs 2
+ operation from
+ name Merge4
+ xpos 400
+ ypos 471
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge5
+ xpos 400
+ ypos 759
+}
+Merge2 {
+ inputs 2
+ operation from
+ name Merge8
+ xpos 400
+ ypos 999
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge9
+ xpos 400
+ ypos 1263
+}
+Dot {
+ name Dot11
+ xpos 434
+ ypos 1650
+}
+push $Naf178e00
+add_layer {C_sky C_sky.red C_sky.green C_sky.blue C_sky.alpha}
+Shuffle2 {
+ fromInput1 {{0} B}
+ in1 C_sky
+ fromInput2 {{0} B}
+ mappings "4 C_sky.red 0 0 rgba.red 0 0 C_sky.green 0 1 rgba.green 0 1 C_sky.blue 0 2 rgba.blue 0 2 C_sky.alpha 0 3 rgba.alpha 0 3"
+ name Shuffle6
+ label "\[knob in1]>\[knob out1]"
+ xpos -590
+ ypos -85
+}
+Dot {
+ name Dot22
+ xpos -556
+ ypos 954
+}
+set Nb5c80000 [stack 0]
+Grade {
+ multiply 0.32
+ gamma 0.98
+ black_clamp false
+ name Grade5
+ xpos -590
+ ypos 1071
+}
+Dot {
+ name Dot23
+ xpos -556
+ ypos 1170
+}
+push $Nb5c80000
+push $Naf178800
+add_layer {C_lgt0 C_lgt0.red C_lgt0.green C_lgt0.blue C_lgt0.alpha}
+Shuffle2 {
+ fromInput1 {{0} B}
+ in1 C_lgt0
+ fromInput2 {{0} B}
+ mappings "4 C_lgt0.red 0 0 rgba.red 0 0 C_lgt0.green 0 1 rgba.green 0 1 C_lgt0.blue 0 2 rgba.blue 0 2 C_lgt0.alpha 0 3 rgba.alpha 0 3"
+ name Shuffle5
+ label "\[knob in1]>\[knob out1]"
+ xpos -370
+ ypos -85
+}
+Dot {
+ name Dot19
+ xpos -336
+ ypos 498
+}
+set Nb5b38800 [stack 0]
+Grade {
+ multiply 0.74
+ black_clamp false
+ name Grade4
+ xpos -370
+ ypos 615
+}
+Dot {
+ name Dot20
+ xpos -336
+ ypos 714
+}
+push $Nb5b38800
+push $Naf178200
+add_layer {C_lgt2 C_lgt2.red C_lgt2.green C_lgt2.blue C_lgt2.alpha}
+Shuffle2 {
+ fromInput1 {{0} B}
+ in1 C_lgt2
+ fromInput2 {{0} B}
+ mappings "4 C_lgt2.red 0 0 rgba.red 0 0 C_lgt2.green 0 1 rgba.green 0 1 C_lgt2.blue 0 2 rgba.blue 0 2 C_lgt2.alpha 0 3 rgba.alpha 0 3"
+ name Shuffle4
+ label "\[knob in1]>\[knob out1]"
+ xpos -150
+ ypos -85
+}
+Dot {
+ name Dot16
+ xpos -116
+ ypos 138
+}
+set Nb5c96000 [stack 0]
+Grade {
+ multiply 0.27
+ black_clamp false
+ name Grade3
+ xpos -150
+ ypos 231
+}
+Dot {
+ name Dot17
+ xpos -116
+ ypos 330
+}
+push $Nb5c96000
+push $Naf23c800
+push $Naf10d400
+Merge2 {
+ inputs 2
+ operation from
+ output {rgba.red rgba.green rgba.blue -rgba.alpha}
+ name Merge1
+ xpos 180
+ ypos -9
+}
+Merge2 {
+ inputs 2
+ operation from
+ output {rgba.red rgba.green rgba.blue -rgba.alpha}
+ name Merge10
+ xpos 180
+ ypos 135
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge11
+ xpos 180
+ ypos 327
+}
+Merge2 {
+ inputs 2
+ operation from
+ output {rgba.red rgba.green rgba.blue -rgba.alpha}
+ name Merge12
+ xpos 180
+ ypos 495
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge13
+ xpos 180
+ ypos 711
+}
+Merge2 {
+ inputs 2
+ operation from
+ output {rgba.red rgba.green rgba.blue -rgba.alpha}
+ name Merge14
+ xpos 180
+ ypos 951
+}
+Merge2 {
+ inputs 2
+ operation plus
+ name Merge15
+ xpos 180
+ ypos 1167
+}
+Merge2 {
+ inputs 2
+ operation plus
+ output {rgba.red rgba.green rgba.blue -rgba.alpha}
+ name Merge6
+ xpos 180
+ ypos 1647
+}
+Copy {
+ inputs 2
+ from0 rgba.alpha
+ to0 rgba.alpha
+ name Copy1
+ xpos 180
+ ypos 1859
+}
+Premult {
+ name Premult1
+ xpos 180
+ ypos 1983
+}
+DeepRead {
+ inputs 0
+ file "\[file dirname \[value root.name]]/aov.karmarendersettings.dcm.0001.exr"
+ format "1280 720 0 0 1280 720 1 HD_720"
+ origset true
+ version 1
+ name DeepRead1
+ xpos 730
+ ypos 1859
+}
+DeepRecolor {
+ inputs 2
+ targetInputAlpha true
+ name DeepRecolor1
+ xpos 180
+ ypos 2079
+}
+Dot {
+ name Dot26
+ xpos 214
+ ypos 2226
+}
+set Nb5bdce00 [stack 0]
+Camera3 {
+ inputs 0
+ focal_point 4.8
+ fstop 2
+ name Camera1
+ xpos 300
+ ypos 2322
+}
+push 0
+push $Nb5bdce00
+DeepToImage2 {
+ name DeepToImage1
+ xpos 70
+ ypos 2319
+}
+Bokeh {
+ inputs 4
+ integrateFrontAndBackSeperately true
+ realWorldLens true
+ focalLength 50
+ fStop 24.576
+ worldScale m
+ name Bokeh1
+ xpos 180
+ ypos 2439
+}
+Viewer {
+ inputs 0
+ frame_range 1-100
+ frame_increment 8
+ full_frame_processing true
+ colour_sample_bbox {0.6171875 0.120312497 0.6187499762 0.121875003}
+ monitorOutNDISenderName "NukeX - perLightAovMixer - Viewer1"
+ monitorOutOutputTransform rec709
+ name Viewer1
+ xpos 365
+ ypos 2572
+}
